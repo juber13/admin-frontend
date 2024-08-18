@@ -33,7 +33,6 @@ const Login = () => {
                   "https://admin-backend-abwu.onrender.com/api/user/login",
                   values
                 ); 
-                console.log(response.data);
                 dispatch(setUserInfo(response.data));
                 toast.success(response.data.message);
                 action.resetForm();

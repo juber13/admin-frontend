@@ -81,7 +81,7 @@ function TicketInfo() {
       </thead>
 
       <tbody>
-        {tickets.length <= 0 && (
+        {tickets && (
           <th colSpan={4} className='text-sm text-center p-4'>
             No ticket raised yet
           </th>
