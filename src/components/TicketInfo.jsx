@@ -66,11 +66,10 @@ function TicketInfo() {
   return (
     <table className='w-[90%] border shadow-md pb-3'>
       <thead className=''>
-        <tr className='border text-red-500'>
+        <tr className='border text-blue-500'>
           {["agent", "admin"].includes(role) && (
             <>
-            <th className='border p-3 font-medium'>Serial Number</th>
-            <th className='border p-3 font-medium text-red-400'>User ID</th>
+              <th className='border p-3 font-medium'>User ID</th>
             </>
           )}
           <th className='border p-3 font-medium'>Ticket ID</th>
@@ -81,18 +80,20 @@ function TicketInfo() {
       </thead>
 
       <tbody>
-        {tickets && (
-          <th colSpan={4} className='text-sm text-center p-4'>
+        {!tickets && (
+          <tr colSpan={4} className='text-sm text-center p-4'>
             No ticket raised yet
-          </th>
+          </tr>
         )}
-        {(isTrue ? users : tickets).map((ticket , index) => (
-          <tr key={ticket._id} className='text-center text-xs'>
+        {(isTrue ? users : tickets).map((ticket, index) => (
+          <tr
+            key={ticket._id}
+            className={`text-center text-xs ${
+              index % 2 === 0 && "bg-gray-100"
+            }`}
+          >
             {["agent", "admin"].includes(role) && (
-                <>
-                 <td className='border p-2'>{index + 1}</td>
-                 <td className='border p-2'>{ticket.raisedBy}</td>
-                </>
+              <td className='border p-2'>{ticket.raisedBy}</td>
             )}
             <td className='border p-2'>{ticket._id}</td>
             <td className='border p-2'>{capitalize(ticket.title)}</td>
@@ -118,7 +119,7 @@ function TicketInfo() {
                     }
                   />
                   <ul
-                    className={` absolute rounded-md overflow-hidden shadow-md z-10 text-gray-700 bg-white flex flex-col 
+                    className={` absolute rounded-md overflow-hidden text-xs shadow-md z-10 text-gray-700 bg-white flex flex-col 
                             ${openEditId === ticket._id ? "block" : "hidden"}`}
                     onClick={(e) => updateStatus(e, ticket._id)}
                     style={{ top: "", right: "" }}

@@ -25,8 +25,8 @@ const SideBar = () => {
     <>
       <div className={`left-side w-[200px] border-r-2 p-3 h-[calc(100vh - 2rem)]  ${["admin" , "agent"].includes(role) ? "block" : "hidden"}`} style={{ boxSizing: "border-box" }}>
         <ul className='m-0 p-0 flex flex-col gap-2 cursor-pointer text-sm '>
-          <li className='hover:bg-gray-600 text-sm p-2 font-medium border px-4 rounded-md' onClick={() => dispatch(setToggle(false))}>Tickets</li>
-          <li className='px-4 hover:bg-gray-600 p-2 font-medium border rounded-md' onClick={getUsers}> Customers</li>
+          <li className='hover:bg-gray-200 border-blue-500 text-sm p-2 font-medium border px-4 rounded-md' onClick={() => dispatch(setToggle(false))}>Tickets</li>
+          <li className='px-4 hover:bg-gray-200 border-blue-500 p-2 font-medium border rounded-md' onClick={getUsers}> Customers</li>
         </ul>
       </div>
     </>

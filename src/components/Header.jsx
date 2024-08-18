@@ -24,19 +24,19 @@ const Header = () => {
         {token ? (
           <button
             onClick={handleLogout}
-            className='border p-3 py-2 text-sm font-medium shadow-sm rounded-md cursor-pointer'
+            className='border p-3 py-2 text-sm font-medium shadow-sm rounded-md cursor-pointer border-blue-500'
           >
             Logout
           </button>
         ) : (
           <Link to={"/login"}>
-            <button className='border p-3 py-2 text-sm font-medium shadow-sm rounded-md cursor-pointer'>
+            <button className='border p-3 py-2 text-sm font-medium shadow-sm rounded-md cursor-pointer border-blue-500'>
               Login
             </button>
           </Link>
         )}
         <Link to={token ? "/raise-ticket" : "/register"}>
-          <div className='border p-3 py-2 text-sm font-medium shadow-sm rounded-md cursor-pointer'>
+          <div className='border p-3 py-2 text-sm font-medium shadow-sm rounded-md cursor-pointer border-blue-500'>
             {token ? "Raise Ticket" : "Register"}
           </div>
         </Link>
