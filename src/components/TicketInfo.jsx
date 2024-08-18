@@ -27,13 +27,13 @@ function TicketInfo() {
 
   const updateStatus = async (e, ticketId) => {
     let status = e.target.innerText;
-    setLoading(true);
+    dispatch(setLoading(true));
     try {
       await axios.post(
         "https://admin-backend-abwu.onrender.com/api/ticket/update-status",
         { status, ticketId }
       );
-      setLoading(false);
+      dispatch(setLoading(false));
       setOpenEditId(false);
       toast.success("Ticket updated successfully");
     } catch (err) {
@@ -49,7 +49,6 @@ function TicketInfo() {
       const res = await axios.get(
         `https://admin-backend-abwu.onrender.com/api/ticket/getAll-ticket?id=${token}`
       );
-      console.log(res);
       dispatch(setUserTickets(res.data));
       dispatch(setLoading(false));
     } catch (err) {
@@ -85,7 +84,7 @@ function TicketInfo() {
             No ticket raised yet
           </tr>
         )}
-        {(isTrue ? users : tickets).map((ticket, index) => (
+        {tickets?.map((ticket, index) => (
           <tr
             key={ticket._id}
             className={`text-center text-xs ${

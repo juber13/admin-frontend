@@ -28,7 +28,6 @@ const Login = () => {
         onSubmit: async (values, action) => {
             setLoading(true);
             try {
-                console.log(values);
                 const response = await axios.post(
                   "https://admin-backend-abwu.onrender.com/api/user/login",
                   values
@@ -89,7 +88,7 @@ const Login = () => {
                         type='submit'
                         disabled={loading} // Disable button while loading
                     >
-                        {loading ? 'Logging in...' : 'Login'}
+                        {loading ? 'Loging...' : 'Login'}
                     </button>
                 </form>
             </div>
